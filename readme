@@ -1,0 +1,77 @@
+
+
+📊 Sentiment vs Stock Return Dashboard
+
+An interactive Streamlit dashboard for exploring relationships between text sentiment metrics (from company filings or financial reports) and stock return performance.
+
+🚀 Features
+
+Visualizes correlation between sentiment and returns using Plotly scatter plots.
+
+Interactive UI built with Streamlit.
+
+Automatically scales and corrects negative sentiment values for visualization.
+
+Allows exploration of multiple sentiment metrics (e.g., Positive, Negative, Net_Sentiment).
+
+
+🧩 Tech Stack
+
+Python 3.10+
+
+Streamlit
+
+Plotly
+
+Pandas
+
+NumPy
+
+
+⚙️ Installation
+
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Run the app:
+
+streamlit run app.py
+
+📈 Usage
+
+Upload or load your dataset with the following essential columns:
+
+Form_File
+
+Filing_Date
+
+Net_Sentiment
+
+Stock_Return
+
+Select a sentiment metric from the dropdown.
+
+The scatter plot updates dynamically showing how sentiment influences returns.
+
+📸 Example Visualization
+
+Each bubble represents a filing.
+
+X-axis → Net Sentiment
+
+Y-axis → Stock Return
+
+Bubble Size → Magnitude of Sentiment
+
+Color → Form Type (10-K, 8-K, etc.)
+
+🧠 Future Improvements
+
+Add regression trendlines.
+
+Include NLP-based sentiment extraction pipeline.
+
+Integrate live market data APIs.
