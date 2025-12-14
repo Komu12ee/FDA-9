@@ -11,14 +11,28 @@ def load_data(file_path: str = "final_with_CCTI.csv"):
     if _df is not None:
         return _df
     
-    if not os.path.exists(file_path):
-        # Fallback for when running from inside backend dir
-        if os.path.exists(f"../{file_path}"):
-            file_path = f"../{file_path}"
+    # Resolve file path relative to this script (data_manager.py)
+    # This ensures it works whether run from root, backend/, or inside Docker
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # If file_path is just a filename (default), prepend base_dir
+    # If it's absolute, this might be redundant but safe if we assume strict project structure
+    if not os.path.isabs(file_path):
+        # Check current dir (legacy)
+        if os.path.exists(file_path):
+            pass # Use as is
+        # Check backend dir (relative to script)
+        elif os.path.exists(os.path.join(base_dir, file_path)):
+             file_path = os.path.join(base_dir, file_path)
+        # Check parent dir (relative to script)
+        elif os.path.exists(os.path.join(base_dir, "..", file_path)):
+             file_path = os.path.join(base_dir, "..", file_path)
         else:
-            raise FileNotFoundError(f"Dataset {file_path} not found.")
+             # Last ditch: check if it's in the root but we are in backend
+             # (handled by parent check above mostly)
+             raise FileNotFoundError(f"Dataset {file_path} not found. Searched in {base_dir} and parents.")
 
-    print("Loading dataset...")
+    print(f"Loading dataset from: {file_path}")
     df = pd.read_csv(file_path)
     
     # Date Conversion
