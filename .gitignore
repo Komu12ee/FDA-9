@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+backend/__pycache__/
+__pycache__/
+*.pyc
+
+# Large CSVs (exclude raw data > 10MB)
+final_all_column*.csv
+*.zip
+
+# Keep the required dataset (allow listing if needed, but exclude others)
+# !final_with_CCTI.csv
+
+# Environment
+.env
+.venv
+venv/
