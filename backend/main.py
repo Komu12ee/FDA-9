@@ -71,7 +71,7 @@ def get_metrics(filters: FilterRequest):
         "total_filings": len(df_f),
         "avg_ccti": float(df_f['CCTI'].mean()) if not df_f.empty else 0,
         "avg_excess_ret": float(df_f['ExcessRet'].mean()) if not df_f.empty else 0,
-        "avg_vol": float(df_f['Vol_30d'].mean()) if not df_f.empty else 0
+        "avg_vol": (float(df_f['Vol_30d'].mean()) / 100) if not df_f.empty else 0
     }
 
 @app.post("/api/charts/ccti_distribution")
