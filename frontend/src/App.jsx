@@ -17,11 +17,14 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [selectedFiling, setSelectedFiling] = useState(null); // New state
 
+  // --- API Configuration ---
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
   // Initial Load
   useEffect(() => {
     async function init() {
       try {
-        const res = await axios.get('http://localhost:8000/api/init_filters');
+        const res = await axios.get(`${API_URL}/api/init_filters`);
         setInitData(res.data);
         setFilters({
           start_date: res.data.min_date,
@@ -40,10 +43,10 @@ function App() {
     try {
       // Parallel requests for performance
       const [mRes, hRes, hmRes, sRes] = await Promise.all([
-        axios.post('http://localhost:8000/api/metrics', filters),
-        axios.post('http://localhost:8000/api/charts/ccti_distribution', filters),
-        axios.post(`http://localhost:8000/api/charts/heatmap?sentiment_col=${sentimentCol}`, filters),
-        axios.post('http://localhost:8000/api/charts/scatter', filters)
+        axios.post(`${API_URL}/api/metrics`, filters),
+        axios.post(`${API_URL}/api/charts/ccti_distribution`, filters),
+        axios.post(`${API_URL}/api/charts/heatmap?sentiment_col=${sentimentCol}`, filters),
+        axios.post(`${API_URL}/api/charts/scatter`, filters)
       ]);
 
       setMetrics({
@@ -75,7 +78,7 @@ function App() {
   // Re-fetch heatmap when sentiment col changes
   useEffect(() => {
     if (filters.start_date) {
-      axios.post(`http://localhost:8000/api/charts/heatmap?sentiment_col=${sentimentCol}`, filters)
+      axios.post(`${API_URL}/api/charts/heatmap?sentiment_col=${sentimentCol}`, filters)
         .then(res => setCharts(prev => ({ ...prev, heatmap: res.data })));
     }
   }, [sentimentCol]);

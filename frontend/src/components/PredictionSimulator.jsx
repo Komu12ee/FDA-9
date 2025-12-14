@@ -24,7 +24,8 @@ export default function PredictionSimulator() {
   const runPrediction = async () => {
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:8000/api/predict', inputs);
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const res = await axios.post(`${API_URL}/api/predict`, inputs);
       setResult(res.data);
     } catch (err) {
       console.error(err);
