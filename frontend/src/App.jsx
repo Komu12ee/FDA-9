@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Analytics } from "@vercel/analytics/react"
 import axios from 'axios';
 import DashboardLayout from './components/DashboardLayout';
 import MetricCard from './components/MetricCard';
@@ -122,7 +123,7 @@ function App() {
       </div>
 
       <PredictionSimulator />
-
+      <Analytics />
     </DashboardLayout>
   );
 }
