@@ -1,6 +1,9 @@
 # Nonlinear Effects of Text Complexity in Corporate Disclosures (FDA-9)
 **Evidence from a New CCTI Index and Machine Learning Models**
 
+> **🌐 Live Demo:** [View Deployment](https://vercel.com/sahukomendra721-6848s-projects/fda-9-yiw6)  
+> *Note: If the link is not working, the backend service may be in sleep mode. Please contact me to restart it.*
+
 ## 📊 Executive Summary
 This project investigates the predictive power of textual complexity in corporate disclosures (10-K/10-Q filings) on stock excess returns. Breaking away from traditional sentiment analysis, we introduce the **Corporate Communication Text Complexity Index (CCTI)**. 
 
