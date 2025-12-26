@@ -1,7 +1,7 @@
 # Nonlinear Effects of Text Complexity in Corporate Disclosures (FDA-9)
 **Evidence from a New CCTI Index and Machine Learning Models**
 
-> **🌐 Live Demo:** [View Deployment](https://vercel.com/sahukomendra721-6848s-projects/fda-9-yiw6)  
+> **🌐 Live Demo:** [View Deployment](https://fda-9-yiw6.vercel.app/)  
 > *Note: If the link is not working, the backend service may be in sleep mode. Please contact me to restart it.*
 
 ## 📊 Executive Summary
